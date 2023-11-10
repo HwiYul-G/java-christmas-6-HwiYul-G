@@ -32,11 +32,15 @@ public enum Menu {
         return price;
     }
 
+    public boolean isBeverage() {
+        return category == Category.BEVERAGE;
+    }
+
     public Category getCategory() {
         return category;
     }
 
-    public enum Category{
+    public enum Category {
         APPETIZER, MAIN, DESSERT, BEVERAGE
     }
 }
