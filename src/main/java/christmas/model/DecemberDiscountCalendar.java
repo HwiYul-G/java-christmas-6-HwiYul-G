@@ -59,4 +59,8 @@ public enum DecemberDiscountCalendar {
     public int getChristmasDdayDiscount() {
         return christmasDdayDiscount;
     }
+
+    public static DecemberDiscountCalendar fromVisitDate(int dayOfMonth) {
+        return values()[dayOfMonth - 1];
+    }
 }
