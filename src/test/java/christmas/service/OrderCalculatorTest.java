@@ -54,9 +54,9 @@ class OrderCalculatorTest {
     @Test
     void verifyWeekdayDiscountOnDessertMenu() {
         orderCalculator = new OrderCalculator(new VisitDate(4), order);
-        int expectedWeekdayDiscount = Constants.WEEKDAY_DISCOUNT_AMOUNT * 3;
+        int expectedWeekdayDiscount = Constants.DAY_OF_WEEK_DISCOUNT_AMOUNT * 3;
 
-        assertThat(orderCalculator.calculateDecemberWeekdayDiscountAmount()).isEqualTo(
+        assertThat(orderCalculator.calculateDecemberDayOfWeekDiscountAmount()).isEqualTo(
             expectedWeekdayDiscount);
     }
 
@@ -64,9 +64,9 @@ class OrderCalculatorTest {
     @Test
     void verifyWeekendDiscountOnMainMenu() {
         orderCalculator = new OrderCalculator(new VisitDate(9), order);
-        int expectedWeekdayDiscount = Constants.WEEKDAY_DISCOUNT_AMOUNT * 2;
+        int expectedWeekdayDiscount = Constants.DAY_OF_WEEK_DISCOUNT_AMOUNT * 2;
 
-        assertThat(orderCalculator.calculateDecemberWeekdayDiscountAmount()).isEqualTo(
+        assertThat(orderCalculator.calculateDecemberDayOfWeekDiscountAmount()).isEqualTo(
             expectedWeekdayDiscount);
     }
 

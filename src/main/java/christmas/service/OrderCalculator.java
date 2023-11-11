@@ -27,7 +27,7 @@ public class OrderCalculator {
         return discountDay.getChristmasDdayDiscount();
     }
 
-    public int calculateDecemberWeekdayDiscountAmount() {
+    public int calculateDecemberDayOfWeekDiscountAmount() {
         DecemberDiscountCalendar discountDay =
             DecemberDiscountCalendar.fromVisitDate(visitDate.visitDate());
         int discountItemCount = order.orderItems().entrySet().stream()
@@ -35,7 +35,7 @@ public class OrderCalculator {
                 entry -> entry.getKey().getCategory() == discountDay.getWeekdayDiscountCategory())
             .mapToInt(Entry::getValue)
             .sum();
-        return discountItemCount * Constants.WEEKDAY_DISCOUNT_AMOUNT;
+        return discountItemCount * Constants.DAY_OF_WEEK_DISCOUNT_AMOUNT;
     }
 
     public int calculateDecemberSpecialDiscountAmount() {
@@ -63,7 +63,7 @@ public class OrderCalculator {
     }
 
     private int calculateTotalCashDiscount() {
-        return calculateDecemberWeekdayDiscountAmount() + calculateDecemberSpecialDiscountAmount()
+        return calculateDecemberDayOfWeekDiscountAmount() + calculateDecemberSpecialDiscountAmount()
             + calculateChristmasDayDiscountAmount();
     }
 
