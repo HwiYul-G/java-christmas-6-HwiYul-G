@@ -63,7 +63,8 @@ public class OrderCalculator {
     }
 
     private int calculateTotalCashDiscount() {
-        return calculateDecemberWeekdayDiscountAmount() + calculateDecemberSpecialDiscountAmount();
+        return calculateDecemberWeekdayDiscountAmount() + calculateDecemberSpecialDiscountAmount()
+            + calculateChristmasDayDiscountAmount();
     }
 
 
