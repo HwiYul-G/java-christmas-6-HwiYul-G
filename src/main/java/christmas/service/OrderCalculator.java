@@ -3,7 +3,7 @@ package christmas.service;
 import christmas.model.DecemberDiscountCalendar;
 import christmas.model.Menu;
 import christmas.model.Order;
-import christmas.model.VisitDate;
+import christmas.model.in.VisitDate;
 import christmas.utils.Constants;
 import java.util.Map.Entry;
 
@@ -22,12 +22,18 @@ public class OrderCalculator {
     }
 
     public int calculateChristmasDayDiscountAmount() {
+        if(!isEventTarget()){
+            return Constants.NO_DISCOUNT;
+        }
         DecemberDiscountCalendar discountDay =
             DecemberDiscountCalendar.fromVisitDate(visitDate.visitDate());
         return discountDay.getChristmasDdayDiscount();
     }
 
     public int calculateDecemberDayOfWeekDiscountAmount() {
+        if(!isEventTarget()){
+            return Constants.NO_DISCOUNT;
+        }
         DecemberDiscountCalendar discountDay =
             DecemberDiscountCalendar.fromVisitDate(visitDate.visitDate());
         int discountItemCount = order.orderItems().entrySet().stream()
@@ -39,6 +45,9 @@ public class OrderCalculator {
     }
 
     public int calculateDecemberSpecialDiscountAmount() {
+        if(!isEventTarget()){
+            return Constants.NO_DISCOUNT;
+        }
         DecemberDiscountCalendar discountDay =
             DecemberDiscountCalendar.fromVisitDate(visitDate.visitDate());
         if (discountDay.isSpecialDiscount()) {
@@ -65,6 +74,10 @@ public class OrderCalculator {
     private int calculateTotalCashDiscount() {
         return calculateDecemberDayOfWeekDiscountAmount() + calculateDecemberSpecialDiscountAmount()
             + calculateChristmasDayDiscountAmount();
+    }
+
+    private boolean isEventTarget(){
+        return order.calculateTotalOrderAmount() >= Constants.EVENT_ELIGIBILITY_THRESHOLD_PRICE;
     }
 
 
