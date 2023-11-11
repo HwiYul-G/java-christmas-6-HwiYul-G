@@ -2,7 +2,7 @@ package christmas.utils;
 
 public class Constants {
     public static final int FIRST_DATE = 1;
-    public static final int LAST_DATE = 12;
+    public static final int LAST_DATE = 31;
 
     public static final int MINIMUM_ORDER_QUANTITY = 1;
     public static final int MAXIMUM_ORDER_QUANTITY = 20;
