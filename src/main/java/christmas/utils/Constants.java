@@ -1,6 +1,8 @@
 package christmas.utils;
 
 public class Constants {
+
+    public static final String LINE_SEPARATOR = System.lineSeparator();
     public static final int FIRST_DATE = 1;
     public static final int LAST_DATE = 31;
 
