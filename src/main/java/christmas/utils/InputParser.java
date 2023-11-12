@@ -10,8 +10,12 @@ import java.util.stream.Collectors;
 public class InputParser {
 
     public static VisitDate parseToVisitDate(String input) {
-        int parsedInput = Integer.parseInt(input);
-        return new VisitDate(parsedInput);
+        try {
+            int parsedInput = Integer.parseInt(input);
+            return new VisitDate(parsedInput);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException(ExceptionMessage.INVALID_VISIT_DATE.getMessage());
+        }
     }
 
     public static OrderItems parseToOrderItems(String input) {
