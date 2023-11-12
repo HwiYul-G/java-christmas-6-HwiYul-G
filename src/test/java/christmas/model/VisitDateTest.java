@@ -1,7 +1,6 @@
 package christmas.model;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
-import static org.junit.jupiter.api.Assertions.*;
 
 import christmas.utils.ExceptionMessage;
 import org.junit.jupiter.api.DisplayName;
