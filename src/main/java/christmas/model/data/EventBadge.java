@@ -1,4 +1,4 @@
-package christmas.model;
+package christmas.model.data;
 
 public enum EventBadge {
     NONE("없음", 0),
@@ -22,5 +22,14 @@ public enum EventBadge {
         return thresholdDiscountAmount;
     }
 
+    public static EventBadge determineBadge(final int discountAmount) {
+        EventBadge resultBadge = NONE;
+        for (EventBadge badge : EventBadge.values()) {
+            if (discountAmount >= badge.getThresholdDiscountAmount()) {
+                resultBadge = badge;
+            }
+        }
+        return resultBadge;
+    }
 
 }
