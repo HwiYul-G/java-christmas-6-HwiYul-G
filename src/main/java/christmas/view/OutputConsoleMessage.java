@@ -12,6 +12,7 @@ enum OutputConsoleMessage {
     BENEFIT_DETAILS_ITEM("%s: -%,d원\n"),
     TOTAL_BENEFIT_AMOUNT("\n<총혜택 금액>\n"),
     TOTAL_BENEFIT_AMOUNT_ITEM("-%,d원\n"),
+    TOTAL_BENEFIT_AMOUNT_IS_ZERO("0원\n"),
     FINAL_AMOUNT_HEADER("\n<할인 후 예상 결제 금액>\n"),
     FINAL_AMOUNT_ITEM("%,d원\n"),
     EVENT_BADGE_HEADER("\n<12월 이벤트 배지>\n"),
