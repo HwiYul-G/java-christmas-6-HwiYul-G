@@ -1,8 +1,8 @@
-package christmas.model;
+package christmas.model.data;
 
-import christmas.model.Menu.Category;
+import christmas.model.data.Menu.Category;
 
-public enum DecemberDiscountCalendar {
+public enum DecemberEventCalendar {
     DEC_1(Category.MAIN, false, 1000),
     DEC_2(Category.MAIN, false, 1100),
     DEC_3(Category.DESSERT, true, 1200),
@@ -40,7 +40,7 @@ public enum DecemberDiscountCalendar {
     private final boolean isSpecialDiscount;
     private final int christmasDdayDiscount;
 
-    DecemberDiscountCalendar(final Category weekdayDiscountCategory,
+    DecemberEventCalendar(final Category weekdayDiscountCategory,
         final boolean isSpecialDiscount,
         final int christmasDdayDiscount) {
         this.weekdayDiscountCategory = weekdayDiscountCategory;
@@ -60,7 +60,7 @@ public enum DecemberDiscountCalendar {
         return christmasDdayDiscount;
     }
 
-    public static DecemberDiscountCalendar fromVisitDate(int dayOfMonth) {
+    public static DecemberEventCalendar fromVisitDate(int dayOfMonth) {
         return values()[dayOfMonth - 1];
     }
 }

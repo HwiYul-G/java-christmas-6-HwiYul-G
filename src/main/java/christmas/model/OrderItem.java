@@ -1,6 +1,6 @@
-package christmas.model.in;
+package christmas.model;
 
-import christmas.model.Menu;
+import christmas.model.data.Menu;
 import christmas.utils.Constants;
 import christmas.utils.ExceptionMessage;
 

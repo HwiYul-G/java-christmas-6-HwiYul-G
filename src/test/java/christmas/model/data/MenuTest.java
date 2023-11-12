@@ -1,4 +1,4 @@
-package christmas.model;
+package christmas.model.data;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
 
