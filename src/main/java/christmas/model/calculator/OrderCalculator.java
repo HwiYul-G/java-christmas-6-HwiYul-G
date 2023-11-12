@@ -2,6 +2,7 @@ package christmas.model.calculator;
 
 import christmas.model.Order;
 import christmas.model.DiscountResult;
+import christmas.utils.Constants;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -43,6 +44,10 @@ public class OrderCalculator {
         return calculateTotalOrderAmount() - calculateTotalCashDiscount();
     }
 
+    public boolean isEligibleForChampagne(){
+        return order.calculateTotalOrderAmount() >= Constants.SHAMPAGNE_EVENT_THRESHOLD_PRICE;
+    }
+
     private int calculateTotalCashDiscount() {
         List<DiscountResult> discountResults = calculateDiscountDetails();
         return discountResults.stream()
@@ -50,5 +55,4 @@ public class OrderCalculator {
             .mapToInt(DiscountResult::discountAmount)
             .sum();
     }
-
 }

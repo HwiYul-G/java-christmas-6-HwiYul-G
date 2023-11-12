@@ -25,9 +25,13 @@ public class OutputView {
             totalAmountBeforeDiscount);
     }
 
-    public void printGiftMenu() {
+    public void printGiftMenu(boolean isGiftTarget) {
         System.out.printf(OutputConsoleMessage.GIFT_MENU_HEADER.getMessage());
-        // TODO : 없는 경우는 '없다.' 있는 경우만 출력
+        if(!isGiftTarget){
+            System.out.printf(OutputConsoleMessage.NOTHING.getMessage());
+            return;
+        }
+        System.out.printf(OutputConsoleMessage.GIFT_MENU_ITEM.getMessage());
     }
 
     public void printBenefitDetails(List<DiscountResult> discountResults) {
