@@ -20,6 +20,6 @@ public class DecemberSpecialDiscount implements DiscountCalculator {
 
     @Override
     public boolean isApplicable(int visitDate, Order order) {
-        return SPECIAL_EVENT_DATE.contains(visitDate);
+        return SPECIAL_EVENT_DATE.contains(visitDate) && order.isEventTarget();
     }
 }

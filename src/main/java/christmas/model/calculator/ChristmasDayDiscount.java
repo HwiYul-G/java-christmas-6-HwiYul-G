@@ -28,7 +28,7 @@ public class ChristmasDayDiscount implements DiscountCalculator {
 
     @Override
     public boolean isApplicable(int visitDate, Order order) {
-        return visitDate >= EVENT_START_DAY && visitDate <= EVENT_LAST_DAY;
+        return visitDate >= EVENT_START_DAY && visitDate <= EVENT_LAST_DAY && order.isEventTarget();
     }
 
 }
