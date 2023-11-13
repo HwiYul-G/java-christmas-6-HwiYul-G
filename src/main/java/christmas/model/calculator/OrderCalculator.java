@@ -10,9 +10,9 @@ public class OrderCalculator {
 
     private final int visitDate;
     private final Order order;
-    private final List<DiscountCalculator> discountCalculators;
+    private final List<Discount> discountCalculators;
 
-    public OrderCalculator(final int visitDate, final Order order, final List<DiscountCalculator> discountCalculators) {
+    public OrderCalculator(final int visitDate, final Order order, final List<Discount> discountCalculators) {
         this.visitDate = visitDate;
         this.order = order;
         this.discountCalculators = discountCalculators;
@@ -24,7 +24,7 @@ public class OrderCalculator {
 
     public List<DiscountResult> calculateDiscountDetails() {
         List<DiscountResult> discountResults = new ArrayList<>();
-        for (DiscountCalculator discountCalculator : discountCalculators) {
+        for (Discount discountCalculator : discountCalculators) {
             if (discountCalculator.isApplicable(visitDate, order)) {
                 DiscountResult result = discountCalculator.calculateDiscount(visitDate, order);
                 discountResults.add(result);

@@ -5,7 +5,7 @@ import christmas.model.Order;
 import christmas.model.DiscountResult;
 import christmas.utils.Constants;
 
-public class ChampagneComplimentaryEvent implements DiscountCalculator {
+public class FreeChampagneEvent implements Discount {
 
     private static final String EVENT_NAME = "증정 이벤트";
     private static final boolean IS_CASH_DISCOUNT = false;

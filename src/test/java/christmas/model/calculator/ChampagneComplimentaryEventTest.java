@@ -13,12 +13,12 @@ import org.junit.jupiter.api.Test;
 
 class ChampagneComplimentaryEventTest {
 
-    private DiscountCalculator discountCalculator;
+    private Discount discountCalculator;
     private Order order;
 
     @BeforeEach
     void setUp() {
-        discountCalculator = new ChampagneComplimentaryEvent();
+        discountCalculator = new FreeChampagneEvent();
 
         Map<Menu, Integer> orderItems = new HashMap<>();
         orderItems.put(Menu.BBQ_RIBS, 2);

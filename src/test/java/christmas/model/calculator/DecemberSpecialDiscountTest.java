@@ -13,7 +13,7 @@ import org.junit.jupiter.api.Test;
 
 class DecemberSpecialDiscountTest {
 
-    private DiscountCalculator discountCalculator;
+    private Discount discountCalculator;
     private Order order;
 
     @BeforeEach

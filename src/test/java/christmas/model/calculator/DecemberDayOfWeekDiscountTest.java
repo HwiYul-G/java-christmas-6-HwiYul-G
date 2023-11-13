@@ -1,7 +1,6 @@
 package christmas.model.calculator;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 
 import christmas.model.DiscountResult;
 import christmas.model.Order;
@@ -15,7 +14,7 @@ import org.junit.jupiter.api.Test;
 
 class DecemberDayOfWeekDiscountTest {
 
-    private DiscountCalculator discountCalculator;
+    private Discount discountCalculator;
     private Order order;
 
     @BeforeEach

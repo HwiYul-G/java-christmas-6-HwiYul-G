@@ -22,7 +22,7 @@ public enum EventBadge {
         return thresholdDiscountAmount;
     }
 
-    public static EventBadge determineBadge(final int discountAmount) {
+    public static EventBadge getBadgeByDiscountAmount(final int discountAmount) {
         EventBadge resultBadge = NONE;
         for (EventBadge badge : EventBadge.values()) {
             if (discountAmount >= badge.getThresholdDiscountAmount()) {

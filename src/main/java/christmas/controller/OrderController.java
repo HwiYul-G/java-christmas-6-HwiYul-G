@@ -3,11 +3,11 @@ package christmas.controller;
 import christmas.model.DiscountResult;
 import christmas.model.Order;
 import christmas.model.OrderItems;
-import christmas.model.calculator.ChampagneComplimentaryEvent;
+import christmas.model.calculator.FreeChampagneEvent;
 import christmas.model.calculator.ChristmasDayDiscount;
 import christmas.model.calculator.DecemberDayOfWeekDiscount;
 import christmas.model.calculator.DecemberSpecialDiscount;
-import christmas.model.calculator.DiscountCalculator;
+import christmas.model.calculator.Discount;
 import christmas.model.calculator.OrderCalculator;
 import christmas.model.data.EventBadge;
 import christmas.view.InputView;
@@ -89,14 +89,14 @@ public class OrderController {
     }
 
     private void printEventBadge(int totalDiscountBenefitAmount) {
-        EventBadge badge = EventBadge.determineBadge(totalDiscountBenefitAmount);
+        EventBadge badge = EventBadge.getBadgeByDiscountAmount(totalDiscountBenefitAmount);
         outputView.printEventBadge(badge.getBadge());
     }
 
     private OrderCalculator createOrderCalculator(int visitDate, Order order) {
-        List<DiscountCalculator> discountCalculators = List.of(new ChristmasDayDiscount(),
+        List<Discount> discountCalculators = List.of(new ChristmasDayDiscount(),
             new DecemberDayOfWeekDiscount(), new DecemberSpecialDiscount(),
-            new ChampagneComplimentaryEvent());
+            new FreeChampagneEvent());
 
         return new OrderCalculator(visitDate, order, discountCalculators);
     }

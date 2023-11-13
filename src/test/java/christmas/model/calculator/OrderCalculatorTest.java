@@ -2,12 +2,9 @@ package christmas.model.calculator;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
-import christmas.model.DiscountResult;
 import christmas.model.data.Menu;
 import christmas.model.Order;
-import christmas.model.calculator.OrderCalculator;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import org.junit.jupiter.api.BeforeEach;
@@ -18,7 +15,7 @@ class OrderCalculatorTest {
 
     private OrderCalculator orderCalculator;
     private Order order;
-    private List<DiscountCalculator> discountCalculators;
+    private List<Discount> discountCalculators;
 
     @BeforeEach
     void setUp() {
@@ -33,7 +30,7 @@ class OrderCalculatorTest {
         discountCalculators.add(new ChristmasDayDiscount());
         discountCalculators.add(new DecemberDayOfWeekDiscount());
         discountCalculators.add(new DecemberSpecialDiscount());
-        discountCalculators.add(new ChampagneComplimentaryEvent());
+        discountCalculators.add(new FreeChampagneEvent());
     }
 
     @DisplayName("전체 혜택 금액 계산 - 모든 이벤트가 적용되는 25일")

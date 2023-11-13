@@ -3,7 +3,7 @@ package christmas.model.calculator;
 import christmas.model.Order;
 import christmas.model.DiscountResult;
 
-public interface DiscountCalculator {
+public interface Discount {
 
     DiscountResult calculateDiscount(final int visitDate, final Order order);
 
