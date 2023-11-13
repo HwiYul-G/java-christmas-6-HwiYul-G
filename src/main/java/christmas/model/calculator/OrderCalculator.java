@@ -2,7 +2,6 @@ package christmas.model.calculator;
 
 import christmas.model.Order;
 import christmas.model.DiscountResult;
-import christmas.utils.Constants;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -44,8 +43,13 @@ public class OrderCalculator {
         return calculateTotalOrderAmount() - calculateTotalCashDiscount();
     }
 
-    public boolean isEligibleForChampagne(){
-        return order.calculateTotalOrderAmount() >= Constants.SHAMPAGNE_EVENT_THRESHOLD_PRICE;
+    public boolean isEligibleForChampagne() {
+        for (Discount discount : discounts) {
+            if (discount instanceof FreeChampagneEvent) {
+                return discount.isApplicable(visitDate, order);
+            }
+        }
+        return false;
     }
 
     private int calculateTotalCashDiscount() {
