@@ -21,8 +21,8 @@ class InputValidatorTest {
     @ValueSource(strings={"양송이수프,2-타파스,-3", "양송이수프-1,"})
     void verifyInvalidOrderFormats(String input){
         assertThatThrownBy(()->InputValidator.validateInputOderFormat(input))
-            .isInstanceOf(IllegalArgumentException.class);
-        // TODO : 메시지 확인
+            .isInstanceOf(IllegalArgumentException.class)
+            .hasMessageContaining("[ERROR] 유효하지 않은 주문입니다. 다시 입력해 주세요.");
     }
 
 }
