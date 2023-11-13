@@ -34,7 +34,7 @@ class DecemberDayOfWeekDiscountTest {
     void verifyWeekdayDiscountOnDessertMenu() {
         int visitDate = 4;
 
-        int expectedWeekdayDiscount = Constants.DAY_OF_WEEK_DISCOUNT_AMOUNT * 3;
+        int expectedWeekdayDiscount = 2023 * 3;
 
         assertThat(discountCalculator.calculateDiscount(visitDate, order)).isEqualTo(
             new DiscountResult("평일 할인", expectedWeekdayDiscount, true));
@@ -45,7 +45,7 @@ class DecemberDayOfWeekDiscountTest {
     void verifyWeekendDiscountOnMainMenu() {
         int visitDate = 9;
 
-        int expectedWeekdayDiscount = Constants.DAY_OF_WEEK_DISCOUNT_AMOUNT * 2;
+        int expectedWeekdayDiscount = 2023 * 2;
 
         assertThat(discountCalculator.calculateDiscount(visitDate, order)).isEqualTo(
             new DiscountResult("주말 할인", expectedWeekdayDiscount, true));

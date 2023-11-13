@@ -15,6 +15,7 @@ public class DecemberDayOfWeekDiscount implements Discount {
     private static final boolean IS_CASH_DISCOUNT = true;
     private static final List<Integer> WEEKEND_DAYS = Arrays.asList(1, 2, 8, 9, 15, 16, 22, 23, 29,
         30);
+    private static final int DAY_OF_WEEK_DISCOUNT_AMOUNT = 2_023;
 
 
     private int calculateDecemberDayOfWeekDiscountAmount(final int visitDate, final Order order) {
@@ -23,7 +24,7 @@ public class DecemberDayOfWeekDiscount implements Discount {
             .filter(entry -> entry.getKey().getCategory() == discountCategory)
             .mapToInt(Entry::getValue)
             .sum();
-        return discountItemCount * Constants.DAY_OF_WEEK_DISCOUNT_AMOUNT;
+        return discountItemCount * DAY_OF_WEEK_DISCOUNT_AMOUNT;
     }
 
     private String determineEventType(final int visitDate) {

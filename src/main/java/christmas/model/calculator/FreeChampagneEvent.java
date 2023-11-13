@@ -9,9 +9,10 @@ public class FreeChampagneEvent implements Discount {
 
     private static final String EVENT_NAME = "증정 이벤트";
     private static final boolean IS_CASH_DISCOUNT = false;
+    private static final int EVENT_THRESHOLD_PRICE = 120_000;
 
     private boolean isEligibleForChampagneComplimentaryEvent(final Order order) {
-        return order.calculateTotalOrderAmount() >= Constants.SHAMPAGNE_EVENT_THRESHOLD_PRICE;
+        return order.calculateTotalOrderAmount() >= EVENT_THRESHOLD_PRICE;
     }
 
     @Override

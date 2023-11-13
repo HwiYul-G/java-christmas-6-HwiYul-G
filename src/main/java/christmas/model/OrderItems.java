@@ -1,13 +1,13 @@
 package christmas.model;
 
 import christmas.model.data.Menu;
-import christmas.utils.Constants;
 import christmas.utils.ExceptionMessage;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
 public record OrderItems(List<OrderItem> orderItems) {
+    private static final int MAXIMUM_TOTAL_ORDER_QUANTITY = 20;
 
     public OrderItems {
         validate(orderItems);
@@ -33,7 +33,7 @@ public record OrderItems(List<OrderItem> orderItems) {
         int totalItemCount = orderItems.stream()
             .mapToInt(OrderItem::quantity)
             .sum();
-        if (totalItemCount > Constants.MAXIMUM_TOTAL_ORDER_QUANTITY) {
+        if (totalItemCount > MAXIMUM_TOTAL_ORDER_QUANTITY) {
             throw new IllegalArgumentException(ExceptionMessage.INVALID_ORDER.getMessage());
         }
     }
