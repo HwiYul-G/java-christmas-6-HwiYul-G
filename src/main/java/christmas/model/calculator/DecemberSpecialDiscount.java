@@ -14,12 +14,12 @@ public class DecemberSpecialDiscount implements Discount {
 
 
     @Override
-    public DiscountResult calculateDiscount(int visitDate, Order order) {
+    public DiscountResult calculateDiscount(final int visitDate, final Order order) {
         return new DiscountResult(EVENT_NAME, Constants.SPECIAL_DISCOUNT_AMOUNT, IS_CASH_DISCOUNT);
     }
 
     @Override
-    public boolean isApplicable(int visitDate, Order order) {
+    public boolean isApplicable(final int visitDate, final Order order) {
         return SPECIAL_EVENT_DATE.contains(visitDate) && order.isEventTarget();
     }
 }

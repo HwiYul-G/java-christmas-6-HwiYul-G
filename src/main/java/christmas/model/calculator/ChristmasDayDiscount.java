@@ -27,7 +27,7 @@ public class ChristmasDayDiscount implements Discount {
     }
 
     @Override
-    public boolean isApplicable(int visitDate, Order order) {
+    public boolean isApplicable(final int visitDate, Order order) {
         return visitDate >= EVENT_START_DAY && visitDate <= EVENT_LAST_DAY && order.isEventTarget();
     }
 

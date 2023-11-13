@@ -9,7 +9,7 @@ import java.util.stream.Collectors;
 
 public class InputParser {
 
-    public static VisitDate parseToVisitDate(String input) {
+    public static VisitDate parseToVisitDate(final String input) {
         try {
             int parsedInput = Integer.parseInt(input);
             return new VisitDate(parsedInput);
@@ -18,7 +18,7 @@ public class InputParser {
         }
     }
 
-    public static OrderItems parseToOrderItems(String input) {
+    public static OrderItems parseToOrderItems(final String input) {
         List<OrderItem> orderItemInfos = Arrays.stream(input.split(","))
             .map(item -> {
                 String[] parts = item.split("-");

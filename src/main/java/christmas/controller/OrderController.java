@@ -61,13 +61,13 @@ public class OrderController {
         outputView.printOrderMenu(orderItems);
     }
 
-    private void processOrder(int visitDate, Order order) {
+    private void processOrder(final int visitDate, Order order) {
         OrderCalculator orderCalculator = createOrderCalculator(visitDate, order);
         processInitialOrderDetails(orderCalculator);
         processDiscountDetails(orderCalculator);
     }
 
-    private void processInitialOrderDetails(OrderCalculator orderCalculator) {
+    private void processInitialOrderDetails(final OrderCalculator orderCalculator) {
         int totalOrderAmount = orderCalculator.calculateTotalOrderAmount();
         outputView.printTotalOrderAmountBeforeDiscount(totalOrderAmount);
 
@@ -75,7 +75,7 @@ public class OrderController {
         outputView.printGiftMenu(isGiftTarget);
     }
 
-    private void processDiscountDetails(OrderCalculator orderCalculator) {
+    private void processDiscountDetails(final OrderCalculator orderCalculator) {
         List<DiscountResult> discountResults = orderCalculator.calculateDiscountDetails();
         outputView.printBenefitDetails(discountResults);
 
@@ -88,12 +88,12 @@ public class OrderController {
         printEventBadge(discountBenefitAmount);
     }
 
-    private void printEventBadge(int totalDiscountBenefitAmount) {
+    private void printEventBadge(final int totalDiscountBenefitAmount) {
         EventBadge badge = EventBadge.getBadgeByDiscountAmount(totalDiscountBenefitAmount);
         outputView.printEventBadge(badge.getBadge());
     }
 
-    private OrderCalculator createOrderCalculator(int visitDate, Order order) {
+    private OrderCalculator createOrderCalculator(final int visitDate, final Order order) {
         List<Discount> discountCalculators = List.of(new ChristmasDayDiscount(),
             new DecemberDayOfWeekDiscount(), new DecemberSpecialDiscount(),
             new FreeChampagneEvent());

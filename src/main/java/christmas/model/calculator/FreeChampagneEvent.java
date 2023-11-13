@@ -20,7 +20,7 @@ public class FreeChampagneEvent implements Discount {
     }
 
     @Override
-    public boolean isApplicable(int visitDate, Order order) {
+    public boolean isApplicable(final int visitDate, final Order order) {
         return isEligibleForChampagneComplimentaryEvent(order) && order.isEventTarget();
     }
 }
