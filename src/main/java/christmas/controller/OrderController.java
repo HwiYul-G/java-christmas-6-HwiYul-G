@@ -37,23 +37,23 @@ public class OrderController {
 
 
     private int inputVisitDate() {
-        while (true) {
+        do {
             try {
                 return inputView.inputVisitDate().visitDate();
             } catch (IllegalArgumentException e) {
                 System.out.println(e.getMessage());
             }
-        }
+        } while (true);
     }
 
     private OrderItems inputOrderItems() {
-        while (true) {
+        do {
             try {
                 return inputView.inputOrderInfo();
             } catch (IllegalArgumentException e) {
                 System.out.println(e.getMessage());
             }
-        }
+        } while (true);
     }
 
     private void processOrderPreview(final int visitDate, final OrderItems orderItems) {
