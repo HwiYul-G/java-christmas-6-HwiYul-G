@@ -1,7 +1,6 @@
 package christmas.model;
 
 import christmas.model.data.Menu;
-import christmas.utils.Constants;
 import java.util.Map;
 
 public record Order(Map<Menu, Integer> orderItems) {

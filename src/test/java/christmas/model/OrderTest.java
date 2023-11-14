@@ -1,10 +1,8 @@
 package christmas.model;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
-import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
 
 import christmas.model.data.Menu;
-import christmas.utils.ExceptionMessage;
 import java.util.HashMap;
 import java.util.Map;
 import org.junit.jupiter.api.BeforeEach;

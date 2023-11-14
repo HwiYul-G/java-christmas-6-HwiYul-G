@@ -5,7 +5,6 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import christmas.model.DiscountResult;
 import christmas.model.Order;
 import christmas.model.data.Menu;
-import christmas.utils.Constants;
 import java.util.HashMap;
 import java.util.Map;
 import org.junit.jupiter.api.BeforeEach;
