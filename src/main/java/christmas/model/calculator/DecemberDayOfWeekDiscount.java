@@ -3,12 +3,11 @@ package christmas.model.calculator;
 import christmas.model.data.Menu.Category;
 import christmas.model.Order;
 import christmas.model.DiscountResult;
-import christmas.utils.Constants;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map.Entry;
 
-public class DecemberDayOfWeekDiscount implements Discount {
+public final class DecemberDayOfWeekDiscount implements Discount {
 
     private static final String WEEKDAY_EVENT_NAME = "평일 할인";
     private static final String WEEKEND_EVENT_NAME = "주말 할인";

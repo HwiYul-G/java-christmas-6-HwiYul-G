@@ -2,11 +2,10 @@ package christmas.model.calculator;
 
 import christmas.model.Order;
 import christmas.model.DiscountResult;
-import christmas.utils.Constants;
 import java.util.Arrays;
 import java.util.List;
 
-public class DecemberSpecialDiscount implements Discount {
+public final class DecemberSpecialDiscount implements Discount {
 
     private static final String EVENT_NAME = "특별 할인";
     private static final boolean IS_CASH_DISCOUNT = true;
