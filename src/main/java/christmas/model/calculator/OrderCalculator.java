@@ -45,7 +45,7 @@ public class OrderCalculator {
 
     public boolean isEligibleForChampagne() {
         for (Discount discount : discounts) {
-            if (discount instanceof FreeChampagneEvent) {
+            if (!discount.calculateDiscount(visitDate, order).isCashDiscount()) {
                 return discount.isApplicable(visitDate, order);
             }
         }
