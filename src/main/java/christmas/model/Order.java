@@ -5,6 +5,7 @@ import christmas.utils.Constants;
 import java.util.Map;
 
 public record Order(Map<Menu, Integer> orderItems) {
+    private static final int EVENT_THRESHOLD_PRICE = 10_000;
 
     public int calculateTotalOrderAmount() {
         return orderItems().entrySet().stream()
@@ -13,7 +14,7 @@ public record Order(Map<Menu, Integer> orderItems) {
     }
 
     public boolean isEventTarget() {
-        return calculateTotalOrderAmount() >= Constants.EVENT_ELIGIBILITY_THRESHOLD_PRICE;
+        return calculateTotalOrderAmount() >= EVENT_THRESHOLD_PRICE;
     }
 
 

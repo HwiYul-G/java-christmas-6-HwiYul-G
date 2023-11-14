@@ -2,7 +2,6 @@ package christmas.model.calculator;
 
 import christmas.model.Order;
 import christmas.model.DiscountResult;
-import christmas.utils.Constants;
 
 public final class ChristmasDayDiscount implements Discount {
 
@@ -13,11 +12,12 @@ public final class ChristmasDayDiscount implements Discount {
     private static final int EVENT_LAST_DAY = 25;
     private static final int START_DISCOUNT_AMOUNT = 1000;
     private static final int STEP = 100;
+    private static final int NO_DISCOUNT = 0;
 
     private int calculateChristmasDayDiscountAmount(final int visitDate, final Order order) {
         if(isApplicable(visitDate, order))
             return START_DISCOUNT_AMOUNT + STEP * (visitDate - EVENT_START_DAY);
-        return Constants.NO_DISCOUNT;
+        return NO_DISCOUNT;
     }
 
     @Override
