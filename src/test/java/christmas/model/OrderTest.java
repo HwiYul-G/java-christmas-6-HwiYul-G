@@ -27,10 +27,10 @@ class OrderTest {
         orderItems.put(Menu.BBQ_RIBS, 2);
 
         Order order = new Order(orderItems);
-        int excpectedOrderAmount = 116000;
+        int expectedOrderAmount = 116000;
 
-        assertThat(order.calculateTotalOrderAmount()).isEqualTo(excpectedOrderAmount);
+        assertThat(order.calculateTotalOrderAmount()).isEqualTo(expectedOrderAmount);
     }
-    
+
 
 }
