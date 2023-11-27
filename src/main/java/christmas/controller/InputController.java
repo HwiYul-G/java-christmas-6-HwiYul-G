@@ -1,21 +1,34 @@
 package christmas.controller;
 
 import christmas.model.OrderItems;
+import christmas.service.CalculatorService;
 import christmas.view.InputView;
 
 public class InputController {
 
     private final InputView inputView;
+    private final CalculatorService calculatorService;
 
-    public InputController(final InputView inputView) {
+    public InputController(final InputView inputView, final  CalculatorService calculatorService) {
         this.inputView = inputView;
+        this.calculatorService = calculatorService;
     }
 
-    public void printStartComment() {
+    public void run(){
+        printStartComment();
+
+        int visitDate = requestVisitDate();
+        calculatorService.setVisitDate(visitDate);
+
+        OrderItems orderItems = requestOrderInfo();
+        calculatorService.setOrder(orderItems);
+    }
+
+    private void printStartComment() {
         inputView.printStartComment();
     }
 
-    public int requestVisitDate() {
+    private int requestVisitDate() {
         do {
             try {
                 return inputView.inputVisitDate().visitDate();
@@ -25,7 +38,7 @@ public class InputController {
         } while (true);
     }
 
-    public OrderItems requestOrderInfo() {
+    private OrderItems requestOrderInfo() {
         do {
             try {
                 return inputView.inputOrderInfo();

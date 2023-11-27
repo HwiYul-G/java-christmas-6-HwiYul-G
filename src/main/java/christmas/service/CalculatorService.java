@@ -1,4 +1,4 @@
-package christmas.controller;
+package christmas.service;
 
 import christmas.model.DiscountResult;
 import christmas.model.Order;
@@ -11,11 +11,14 @@ import christmas.model.calculator.Discount;
 import christmas.model.calculator.OrderCalculator;
 import java.util.List;
 
-public class CalculatorController {
+public class CalculatorService {
+
+    private int visitDate;
+    private OrderItems orderItems;
 
     private final OrderCalculator orderCalculator;
 
-    public CalculatorController(final int visitDate, final OrderItems orderItems) {
+    public CalculatorService() {
         orderCalculator = createOrderCalculator(visitDate, orderItems.toOrder());
     }
 
@@ -38,6 +41,19 @@ public class CalculatorController {
     public int calculateExpectedPaymentAfterDiscount() {
         return orderCalculator.calculateExpectedPaymentAfterDiscount();
     }
+
+    public OrderItems getOrderItems() {
+        return orderItems;
+    }
+
+    public void setVisitDate(int visitDate) {
+        this.visitDate = visitDate;
+    }
+
+    public void setOrder(OrderItems orderItems) {
+        this.orderItems = orderItems;
+    }
+
 
     private OrderCalculator createOrderCalculator(final int visitDate, final Order order) {
         List<Discount> discountCalculators = List.of(new ChristmasDayDiscount(),

@@ -3,42 +3,65 @@ package christmas.controller;
 import christmas.model.DiscountResult;
 import christmas.model.OrderItems;
 import christmas.model.data.EventBadge;
+import christmas.service.CalculatorService;
 import christmas.view.OutputView;
 import java.util.List;
 
 public class OutputController {
 
     private final OutputView outputView;
+    private final CalculatorService calculatorService;
 
-    public OutputController(final OutputView outputView) {
+    public OutputController(final OutputView outputView,
+        final CalculatorService calculatorService) {
         this.outputView = outputView;
+        this.calculatorService = calculatorService;
     }
 
-    public void printOrderMenu(final OrderItems orderItems){
+    public void run(){
+        printOrderMenu();
+
+        printTotalOrderAmountBeforeDiscount();
+
+        printGiftMenu();
+        printBenefitDetails();
+        printTotalBenefitAmount();
+        printExpectedPaymentAfterDiscount();
+        printEventBadge();
+    }
+
+    private void printOrderMenu() {
+        OrderItems orderItems = calculatorService.getOrderItems();
         outputView.printOrderMenu(orderItems);
     }
 
-    public void printTotalOrderAmountBeforeDiscount(final int totalOrderAmount){
+    private void printTotalOrderAmountBeforeDiscount() {
+        int totalOrderAmount = calculatorService.calculateTotalOrderAmount();
         outputView.printTotalOrderAmountBeforeDiscount(totalOrderAmount);
     }
 
-    public void printGiftMenu(final boolean isGiftTarget){
+    private void printGiftMenu() {
+        boolean isGiftTarget = calculatorService.isEligibleForChampagne();
         outputView.printGiftMenu(isGiftTarget);
     }
 
-    public void printBenefitDetails(final List<DiscountResult> discountResults){
+    private void printBenefitDetails() {
+        List<DiscountResult> discountResults = calculatorService.calculateDiscountDetails();
         outputView.printBenefitDetails(discountResults);
     }
 
-    public void printTotalBenefitAmount(final int discountBenefitAmount){
+    private void printTotalBenefitAmount() {
+        int discountBenefitAmount = calculatorService.calculateTotalDiscountBenefitAmount();
         outputView.printTotalBenefitAmount(discountBenefitAmount);
     }
 
-    public void printExpectedPaymentAfterDiscount(final int expectedPayment){
+    private void printExpectedPaymentAfterDiscount() {
+        int expectedPayment = calculatorService.calculateExpectedPaymentAfterDiscount();
         outputView.printExpectedPaymentAfterDiscount(expectedPayment);
     }
 
-    public void printEventBadge(final int discountBenefitAmount){
+    private void printEventBadge() {
+        int discountBenefitAmount = calculatorService.calculateTotalDiscountBenefitAmount();
         EventBadge badge = EventBadge.getBadgeByDiscountAmount(discountBenefitAmount);
         outputView.printEventBadge(badge.getBadge());
     }
