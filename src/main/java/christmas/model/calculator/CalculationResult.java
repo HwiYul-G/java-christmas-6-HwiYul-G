@@ -5,7 +5,6 @@ import christmas.model.OrderItems;
 import java.util.List;
 
 public record CalculationResult(
-    OrderItems orderItems,
     int totalOrderAmount,
     List<DiscountResult> discountDetails,
     int totalDiscountAmount,
