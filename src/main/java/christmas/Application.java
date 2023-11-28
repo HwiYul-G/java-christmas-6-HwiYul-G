@@ -1,6 +1,5 @@
 package christmas;
 
-import christmas.model.calculator.CalculationResult;
 import christmas.service.CalculatorService;
 import christmas.controller.InputController;
 import christmas.controller.OutputController;
@@ -15,9 +14,9 @@ public class Application {
         CalculatorService calculatorService = new CalculatorService();
 
         InputController inputController = new InputController(inputView, calculatorService);
-        OutputController outputController = new OutputController(outputView);
+        OutputController outputController = new OutputController(outputView, calculatorService);
 
-        CalculationResult calculationResult = inputController.run();
-        outputController.run(calculationResult);
+        inputController.run();
+        outputController.run();
     }
 }

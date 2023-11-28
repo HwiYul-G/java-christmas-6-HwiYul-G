@@ -13,10 +13,13 @@ import java.util.List;
 
 public class CalculatorService {
 
+    private int visitDate;
+    private OrderItems orderItems;
+
     public CalculatorService() {
     }
 
-    public CalculationResult calculate(final int visitDate, final OrderItems orderItems){
+    public CalculationResult calculate() {
         OrderCalculator orderCalculator = createOrderCalculator(visitDate, orderItems.toOrder());
         return orderCalculator.calculate();
     }
@@ -28,4 +31,16 @@ public class CalculatorService {
         return new OrderCalculator(visitDate, order, discountCalculators);
     }
 
+
+    public OrderItems getOrderItems() {
+        return orderItems;
+    }
+
+    public void setVisitDate(int visitDate) {
+        this.visitDate = visitDate;
+    }
+
+    public void setOrderItems(OrderItems orderItems) {
+        this.orderItems = orderItems;
+    }
 }

@@ -15,13 +15,14 @@ public class InputController {
         this.calculatorService = calculatorService;
     }
 
-    public CalculationResult run(){
+    public void run(){
         printStartComment();
 
         int visitDate = requestVisitDate();
         OrderItems orderItems = requestOrderInfo();
 
-        return calculatorService.calculate(visitDate, orderItems);
+        calculatorService.setVisitDate(visitDate);
+        calculatorService.setOrderItems(orderItems);
     }
 
     private void printStartComment() {

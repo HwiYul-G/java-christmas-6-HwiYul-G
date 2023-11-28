@@ -24,7 +24,7 @@ public class OrderCalculator {
         int expectedPayment = calculateExpectedPaymentAfterDiscount();
         boolean eligibleForChampagne = isEligibleForChampagne();
 
-        return new CalculationResult(order.toOrderItems(), totalOrderAmount, discountDetails, totalDiscountAmount, expectedPayment, eligibleForChampagne);
+        return new CalculationResult(totalOrderAmount, discountDetails, totalDiscountAmount, expectedPayment, eligibleForChampagne);
     }
 
     private int calculateTotalOrderAmount() {

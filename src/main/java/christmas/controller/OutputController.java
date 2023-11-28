@@ -11,16 +11,18 @@ import java.util.List;
 public class OutputController {
 
     private final OutputView outputView;
+    private final CalculatorService calculatorService;
 
-    public OutputController(final OutputView outputView) {
+    public OutputController(final OutputView outputView, final CalculatorService calculatorService) {
         this.outputView = outputView;
+        this.calculatorService = calculatorService;
     }
 
-    public void run(final CalculationResult calculationResult){
-        printOrderMenu(calculationResult.orderItems());
+    public void run(){
+        CalculationResult calculationResult = calculatorService.calculate();
 
+        printOrderMenu(calculatorService.getOrderItems());
         printTotalOrderAmountBeforeDiscount(calculationResult.totalOrderAmount());
-
         printGiftMenu(calculationResult.eligibleForChampagne());
         printBenefitDetails(calculationResult.discountDetails());
         printTotalBenefitAmount(calculationResult.totalDiscountAmount());
