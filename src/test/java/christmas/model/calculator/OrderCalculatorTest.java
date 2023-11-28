@@ -39,7 +39,7 @@ class OrderCalculatorTest {
         orderCalculator = new OrderCalculator(25, order, discountCalculators);
         int expectedDiscountBenefitAmount = 35469;
 
-        assertThat(orderCalculator.calculateTotalDiscountBenefitAmount()).isEqualTo(
+        assertThat(orderCalculator.calculate().totalDiscountAmount()).isEqualTo(
             expectedDiscountBenefitAmount);
     }
 
@@ -49,7 +49,7 @@ class OrderCalculatorTest {
         orderCalculator = new OrderCalculator(25, order, discountCalculators);
         int expectedPayment = 170531;
 
-        assertThat(orderCalculator.calculateExpectedPaymentAfterDiscount()).isEqualTo(
+        assertThat(orderCalculator.calculate().expectedPayment()).isEqualTo(
             expectedPayment);
     }
 
@@ -59,7 +59,7 @@ class OrderCalculatorTest {
         orderCalculator = new OrderCalculator(8, order, discountCalculators);
         int expectedDiscountBenefitAmount = 2023 * 2 + 25000 + 1700;
 
-        assertThat(orderCalculator.calculateTotalDiscountBenefitAmount()).isEqualTo(
+        assertThat(orderCalculator.calculate().totalDiscountAmount()).isEqualTo(
             expectedDiscountBenefitAmount);
     }
 
@@ -70,7 +70,7 @@ class OrderCalculatorTest {
         orderCalculator = new OrderCalculator(visitDate, order, discountCalculators);
         int expectedPayment = 181000 - 2023 * 2 - 1700;
 
-        assertThat(orderCalculator.calculateExpectedPaymentAfterDiscount()).isEqualTo(
+        assertThat(orderCalculator.calculate().expectedPayment()).isEqualTo(
             expectedPayment);
     }
 
