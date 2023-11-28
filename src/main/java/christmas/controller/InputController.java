@@ -1,6 +1,7 @@
 package christmas.controller;
 
 import christmas.model.OrderItems;
+import christmas.model.calculator.CalculationResult;
 import christmas.service.CalculatorService;
 import christmas.view.InputView;
 
@@ -14,14 +15,13 @@ public class InputController {
         this.calculatorService = calculatorService;
     }
 
-    public void run(){
+    public CalculationResult run(){
         printStartComment();
 
         int visitDate = requestVisitDate();
-        calculatorService.setVisitDate(visitDate);
-
         OrderItems orderItems = requestOrderInfo();
-        calculatorService.setOrder(orderItems);
+
+        return calculatorService.calculate(visitDate, orderItems);
     }
 
     private void printStartComment() {
