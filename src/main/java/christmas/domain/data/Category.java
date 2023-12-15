@@ -1,4 +1,6 @@
-package christmas.domain;
+package christmas.domain.data;
+
+import christmas.util.ExceptionMessage;
 
 public enum Category {
     APPETIZER("애피타이저"),
@@ -22,6 +24,6 @@ public enum Category {
                 return category;
             }
         }
-        throw new IllegalArgumentException("존재하지 않는 카테고리입니다.");
+        throw new IllegalArgumentException(ExceptionMessage.INVALID_CATEGORY.getMessage());
     }
 }
