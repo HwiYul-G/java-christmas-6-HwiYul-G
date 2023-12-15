@@ -1,4 +1,4 @@
-package christmas.service;
+package christmas.domain.service;
 
 import christmas.domain.EventResult;
 import christmas.domain.Orders;
@@ -18,8 +18,16 @@ public class ChristmasEvent implements Event {
     }
 
     @Override
+    public boolean isAvailable(Orders orders) {
+        return orders.isEventTarget();
+    }
+
+    @Override
     public EventResult calculateEventResult(int date, Orders orders) {
-        int discountPrice = calculateDiscountPrice(date);
-        return new EventResult(EVENT_NAME, discountPrice);
+        if(isAvailable(orders)) {
+            int discountPrice = calculateDiscountPrice(date);
+            return new EventResult(EVENT_NAME, discountPrice);
+        }
+        return new EventResult(EVENT_NAME, 0);
     }
 }

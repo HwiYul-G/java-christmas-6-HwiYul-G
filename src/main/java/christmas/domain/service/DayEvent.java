@@ -1,4 +1,4 @@
-package christmas.service;
+package christmas.domain.service;
 
 import christmas.domain.EventResult;
 import christmas.domain.Orders;
@@ -33,13 +33,22 @@ public class DayEvent implements Event {
     }
 
     @Override
+    public boolean isAvailable(Orders orders) {
+        return orders.isEventTarget();
+    }
+
+    @Override
     public EventResult calculateEventResult(int date, Orders orders) {
+        if(!isAvailable(orders)){
+            return new EventResult("NO",0);
+        }
         int discountPrice = calculateDiscountPrice(date, orders);
         if (isWeekendDate(date)) {
             return new EventResult(WEEKEND_EVENT_NAME, discountPrice);
         }
         return new EventResult(WEEKDAY_EVENT_NAME, discountPrice);
     }
+
 
 
 }
