@@ -16,9 +16,13 @@ public record Orders(List<Order> orders) {
     }
 
     private void validate() {
-        validateDuplication();
-        validateQuantity();
-        validateCategory();
+        try {
+            validateDuplication();
+            validateQuantity();
+            validateCategory();
+        }catch(IllegalArgumentException e){
+            throw new IllegalArgumentException(ExceptionMessage.INVALID_ORDERS.getMessage());
+        }
     }
 
     // 중복 메뉴(Order.name)이 동일한 게 있는 경우 불가능

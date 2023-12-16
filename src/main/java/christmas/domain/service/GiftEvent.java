@@ -14,6 +14,11 @@ public class GiftEvent implements Event {
     }
 
     @Override
+    public boolean isAvailable(Orders orders) {
+        return orders.isEventTarget();
+    }
+
+    @Override
     public EventResult calculateEventResult(int date, Orders orders) {
         if (isGiftTarget(orders.calculateTotalPrice())) {
             return new EventResult(EVENT_NAME, Menu.CHAMPAGNE.getPrice());
