@@ -16,5 +16,4 @@ public record Order(Map<Menu, Integer> orderItems) {
         return calculateTotalOrderAmount() >= EVENT_THRESHOLD_PRICE;
     }
 
-
 }

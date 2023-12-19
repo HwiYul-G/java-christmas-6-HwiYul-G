@@ -17,11 +17,21 @@ public class OrderCalculator {
         this.discounts = discounts;
     }
 
-    public int calculateTotalOrderAmount() {
+    public CalculationResult calculate() {
+        int totalOrderAmount = calculateTotalOrderAmount();
+        List<DiscountResult> discountDetails = calculateDiscountDetails();
+        int totalDiscountAmount = calculateTotalDiscountBenefitAmount();
+        int expectedPayment = calculateExpectedPaymentAfterDiscount();
+        boolean eligibleForChampagne = isEligibleForChampagne();
+
+        return new CalculationResult(totalOrderAmount, discountDetails, totalDiscountAmount, expectedPayment, eligibleForChampagne);
+    }
+
+    private int calculateTotalOrderAmount() {
         return order.calculateTotalOrderAmount();
     }
 
-    public List<DiscountResult> calculateDiscountDetails() {
+    private List<DiscountResult> calculateDiscountDetails() {
         List<DiscountResult> discountResults = new ArrayList<>();
         for (Discount discount : discounts) {
             if (discount.isApplicable(visitDate, order)) {
@@ -32,18 +42,18 @@ public class OrderCalculator {
         return discountResults;
     }
 
-    public int calculateTotalDiscountBenefitAmount() {
+    private int calculateTotalDiscountBenefitAmount() {
         List<DiscountResult> discountResults = calculateDiscountDetails();
         return discountResults.stream()
             .mapToInt(DiscountResult::discountAmount)
             .sum();
     }
 
-    public int calculateExpectedPaymentAfterDiscount() {
+    private int calculateExpectedPaymentAfterDiscount() {
         return calculateTotalOrderAmount() - calculateTotalCashDiscount();
     }
 
-    public boolean isEligibleForChampagne() {
+    private boolean isEligibleForChampagne() {
         for (Discount discount : discounts) {
             if (!discount.calculateDiscount(visitDate, order).isCashDiscount()) {
                 return discount.isApplicable(visitDate, order);
